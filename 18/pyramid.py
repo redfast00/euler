@@ -1,6 +1,5 @@
-import os
-dir = os.path.dirname(__file__)
-filename = os.path.join(dir, 'input.txt')
+import sys
+filename = sys.argv[1]
 
 # Algorithm works as follows: look at the penultimate layer of the tree. Then, for
 #  each node that layer, look at the possible choices below the node, pick the best one
