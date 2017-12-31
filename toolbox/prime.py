@@ -37,3 +37,20 @@ def all_primes_below(number):
             primes.append(candidate)
         candidate += 1
     return primes
+
+def stream_primes():
+    primes = []
+    candidate = 2
+    while True:
+        breakpoint = int(math.sqrt(candidate))
+        for prime in primes:
+            if candidate % prime == 0:
+                break
+            if prime > breakpoint:
+                primes.append(candidate)
+                yield candidate
+                break
+        else:
+            primes.append(candidate)
+            yield candidate
+        candidate += 1
