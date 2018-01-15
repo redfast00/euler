@@ -82,6 +82,22 @@ class DynamicPrime(object):
             place = bisect.bisect_left(self.primes, number)
             return (place != len(self.primes) and self.primes[place] == number)
 
+    def factor(self, number):
+        assert number > 1
+        result = []
+        limit = int(math.sqrt(number))
+        while True:
+            for candidate_factor in self:
+                if limit < candidate_factor:
+                    result.append(number)
+                    return result
+                if number % candidate_factor == 0:
+                    # Found a factor
+                    number = number // candidate_factor
+                    limit =  int(math.sqrt(number))
+                    result.append(candidate_factor)
+                    break
+
     def _generate_next(self):
         candidate = self.primes[-1] + 1
         while True:
