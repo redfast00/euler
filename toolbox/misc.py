@@ -11,3 +11,6 @@ def is_pandigital(string):
             return False
     else:
         return True
+
+def digital_sum(number):
+    return sum((int(i) for i in str(number)))
