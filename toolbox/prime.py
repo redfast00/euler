@@ -98,6 +98,13 @@ class DynamicPrime(object):
                     result.append(candidate_factor)
                     break
 
+    def divisors(self, number):
+        found = {1}
+        for factor in self.factor(number):
+            # Not using a generator here because modifying in-place
+            found.update({x*factor for x in found})
+        return found
+
     def _generate_next(self):
         candidate = self.primes[-1] + 1
         while True:
